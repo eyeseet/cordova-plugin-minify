@@ -1,0 +1,36 @@
+{
+  "name": "cordova-plugin-minify",
+  "version": "0.0.1",
+  "description": "Plugin for minifying your html, js and css",
+  "cordova": {
+    "id": "cordova-plugin-minify",
+    "platforms": [
+      "android",
+      "ios",
+      "windows",
+      "browser",
+      "osx"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eyeseet/cordova-plugin-minify.git"
+  },
+  "keywords": [
+    "cordova",
+    "minify",
+    "html",
+    "js",
+    "css",
+    "ecosystem:cordova"
+  ],
+  "author": "EyeSeeT",
+  "license": "MIT",
+  "dependencies": {
+	"terser": "^5.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/eyeseet/cordova-plugin-minify/issues"
+  },
+  "homepage": "https://github.com/eyeseet/cordova-plugin-minify#readme"
+}
