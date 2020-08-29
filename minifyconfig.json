@@ -1,0 +1,15 @@
+{
+	"minifyEnabled": "Release",
+	"combineJavascripts": {
+		"enabled" : false
+	},
+	"files": {
+		"paths": [""],
+		"recursive": true,
+		"javascriptStrategy": "scanDirectory"
+	},
+	"terserOptions": { 
+	},
+	"cleanCSSOptions": {
+	}
+}
