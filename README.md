@@ -7,7 +7,7 @@ Minify javascripts and css in your cordova project automatically using Terser an
 ## Installation
 From your command prompt/terminal go to your app's root folder and execute:
 
-`cordova plugin add https://github.com/eyeseet/cordova-plugin-minify`
+`cordova plugin add cordova-plugin-minify`
 
 The plugin will now automatically minify --release builds.
 
