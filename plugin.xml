@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-		id="cordova-plugin-minify" version="0.1.0">
+		id="cordova-plugin-minify" version="0.1.1">
     <name>Cordova Minify Plugin</name>
     <description>Plugin for minifying your html, js and css</description>
     <keywords>cordova,minify,html,js,css</keywords>
