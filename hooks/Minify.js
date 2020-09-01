@@ -1,4 +1,5 @@
 module.exports = function(context) {
+	const CONFIG_FILE = "minifyconfig.json";
 	var deferral = require('q').defer();
 	
 	// Load modules
@@ -10,7 +11,7 @@ module.exports = function(context) {
 	
 	
 	// configuration
-	var configFile = path.join(context.opts.projectRoot, "minifyconfig.json");
+	var configFile = path.join(context.opts.projectRoot, CONFIG_FILE);
 	var fileConfig = {};
 	if(fs.existsSync(configFile)) {
 		fileConfig = JSON.parse(fs.readFileSync(configFile, "utf8"));
@@ -42,13 +43,15 @@ module.exports = function(context) {
 		console.log("Minification disabled in config file.");
 		return;
 	}
-	else if(config.minifyEnabled == 'Release' && !context.opts.options.release) {
-		console.log("Not minifying, only enabled for --release builds.");
-		return;
+	else if(config.minifyEnabled == 'Release') {
+		if(!context.opts.options.release) {
+			console.log("Not minifying, only enabled for --release builds.");
+			return;
+		}
 	}
 	else if(config.minifyEnabled !== true && config.minifyEnabled != 'Always') {
-		console.warn("Not minifying, unknown minifyEnabled value specified in options,"
-			+ " expected one of the following 'Never, Always, Release'");
+		console.warn("Not minifying, unknown minifyEnabled value specified in options, value was "
+			+ config.minifyEnabled + " expected one of the following 'Never, Always, Release'");
 		return;
 	}
 	if(config.combineJavascripts.enabled 
