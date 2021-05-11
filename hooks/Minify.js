@@ -163,7 +163,7 @@ module.exports = function(context) {
 		var results = [];
 		
 		var html = fs.readFileSync(file, "utf8");
-		var SRC_REGEX = /<script(?<before>[^>]*)src="(?<src>.*)"(?<after>[^>]*)>/gi;
+		var SRC_REGEX = /<script(?<before>[^>]*)src="(?<src>[^"]*)"(?<after>[^>]*)>/gi;
 		
 		// gather javascripts from html
 		if(config.files.javascriptStrategy == 'scanHtml') {
