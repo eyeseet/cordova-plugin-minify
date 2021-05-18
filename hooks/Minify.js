@@ -203,6 +203,8 @@ module.exports = function(context) {
      * if config.combine.enabled combines files in one minified file (order based on array)
      */
     async function processJavascriptFiles(wwwpath, files) {
+        var mapSource = config.terserOptions.sourceMap != undefined && config.terserOptions.sourceMap != false;
+        var sourceMapDir = path.join(context.opts.projectRoot, "sourcemap/");
         var options = config.terserOptions;
         if (config.combineJavascripts.enabled) {
             console.log("combining and minifying " + files.length + " javascript files");
@@ -210,12 +212,17 @@ module.exports = function(context) {
             for (file of files) {
                 console.log(file);
                 content[file] = fs.readFileSync(file, "utf8");
-                fs.unlink(file, () => {});
+                if (mapSource) {
+                    console.log(path.join(sourceMapDir, 'sources', file.substring(wwwpath.length)));
+                    fs.rename(file, path.join(sourceMapDir, 'sources', file.substring(wwwpath.length)), () => {});
+                } else {
+                    fs.unlink(file, () => {});
+                }
             }
             var result = await minify(content, options);
             fs.writeFileSync(path.join(wwwpath, config.combineJavascripts.file), result.code);
-            if (config.terserOptions.sourceMap != false) {
-                fs.writeFileSync(path.join(wwwpath, config.combineJavascripts.file + ".map"), result.map);
+            if (mapSource) {
+                fs.writeFileSync(path.join(sourceMapDir, config.combineJavascripts.file + ".map"), result.map);
             }
 
             deferral.resolve();
