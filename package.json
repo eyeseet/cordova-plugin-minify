@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-minify",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Plugin for minifying your html, js and css",
   "cordova": {
     "id": "cordova-plugin-minify",
