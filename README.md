@@ -62,3 +62,5 @@ See `files.paths` to manipulate the order html files are scanned.
 }
 ```
 The configuration above runs for both debug and release builds. The plugin scans all html files for `<script src='...></script>` tags starting with jsincludes.html (used to specify order of javascripts). The content of all js files referenced by script tags is combined in the file all.min.js, and original files are removed. The first script tag in the html files is replaced with a reference to all.min.js, others are removed. Terser options: $ is not mangled (use with jQuery), top level scope variables are mangled and comments removed.
+
+[Created by Content And Creations](https://contentandcreations.nl)
